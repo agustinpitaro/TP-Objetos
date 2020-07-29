@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "intall" :"npm install cli-diagram --save"
+    "install": "npm install cli-diagram --save"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/agustinpitaro/TP-Objetos/issues"
   },
-  "homepage": "https://github.com/agustinpitaro/TP-Objetos#readme"
+  "homepage": "https://github.com/agustinpitaro/TP-Objetos#readme",
+  "dependencies": {
+    "cli-diagram": "^0.3.0"
+  }
 }
