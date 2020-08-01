@@ -3,7 +3,7 @@
 Se trata de una paqueteria, donde se almacenan cajas. Dentro de esas cajas puede haber un producto o mas cajas con productos.
 
 La libreria 'cli-diagram' es utilizada para graficar la composicion de las cajas del deposito.
-> ###cli-diagram
+> cli-diagram
 > 
 > Esta libreria permite dibujar diagramas, a partir de elementos, en consola. Estos elementos pueden ser de distintos tipos(box, > > line, labels, arrow, space o container) y permiten un cierto grado de personalizacion.
 
