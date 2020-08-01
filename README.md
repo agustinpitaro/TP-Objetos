@@ -4,9 +4,9 @@ Se trata de una paqueteria, donde se almacenan cajas. Dentro de esas cajas puede
 
 La libreria 'cli-diagram' es utilizada para graficar la composicion de las cajas del deposito.
 # Comandos NPM
-"npm install": Instala las dependencias necesarias.
-"npm start": Crea el archivo paqueteria.js a partir del paqueteria.ts.
-"npm test": Ejecuta el ejemplo.
+- "npm install": Instala las dependencias necesarias.
+- "npm start": Crea el archivo paqueteria.js a partir del paqueteria.ts.
+- "npm test": Ejecuta el ejemplo.
 
 # Ejemplo
 
