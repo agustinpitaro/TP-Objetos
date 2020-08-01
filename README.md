@@ -36,9 +36,12 @@ Fuente: https://github.com/Lakitna/cli-diagram
 - "npm start": Crea el archivo paqueteria.js a partir del paqueteria.ts.
 - "npm test": Ejecuta el ejemplo.
 
+
+
 # Ejemplo
 
 Crea 4 productos simples(p1,p2,p3,p4) y los muestra:
+
 ```sh
 ┌────────┐
 │        │
