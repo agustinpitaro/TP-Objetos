@@ -1,5 +1,5 @@
 # TP-Objetos
 
-Se trata de un deposito, en el cual se almacenan cajas. Dentro de esas cajas puede haber libros o mas cajas con libros.
+Se trata de una paqueteria, donde se almacenan cajas. Dentro de esas cajas puede haber un producto o mas cajas con productos.
 
 La libreria 'cli-diagram' es utilizada para graficar la composicion de las cajas del deposito.
