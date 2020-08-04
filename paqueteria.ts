@@ -79,7 +79,8 @@ pc3.addPaquete(pc1);
 pc3.addPaquete(pc2);
 
 pc1.mostrar();
-console.log("\n");
 pc2.mostrar();
-console.log("\n");
 pc3.mostrar();
+
+
+
