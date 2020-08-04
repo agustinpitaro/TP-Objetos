@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node paqueteria.js",
+    "start": "tsc paqueteria.ts",
+    "test":"node paqueteria.js",
     "install": "npm install cli-diagram typescript @types/node --save"
   },
   "repository": {
