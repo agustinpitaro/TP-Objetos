@@ -1,14 +1,14 @@
 # Package hierarchy with the Composite pattern
 
-An academic TypeScript project that models a shipping warehouse where products can be stored directly or nested inside packages. The same operations can be applied to individual products and composite packages through a shared abstraction.
+A small TypeScript project that models a shipping warehouse where products can be stored directly or nested inside packages. The same operations can be applied to individual products and composite packages through a shared abstraction.
 
 ## Design
 
 The model is an example of the **Composite design pattern**:
 
-- `paqueteAbs` defines the common interface used by every element.
-- `paqueteSimple` represents a leaf containing an individual product.
-- `paqueteCompuesto` represents a composite that can contain simple products or other packages.
+- `Paquete` defines the common interface used by every element.
+- `PaqueteSimple` represents a leaf containing an individual product.
+- `PaqueteCompuesto` represents a composite that can contain simple products or other packages.
 - `cli-diagram` renders the resulting hierarchy in the terminal.
 
 This structure allows clients to treat individual and nested elements uniformly.
@@ -25,21 +25,36 @@ pc3
     └── p4
 ```
 
-The included example creates four simple products, groups them into two packages, and then combines both packages into a third composite package.
+## Requirements
+
+- Node.js 20 or newer
+- npm
+
+## Run locally
+
+```bash
+npm install
+npm start
+```
+
+## Build and test
+
+```bash
+npm run build
+npm test
+```
+
+The test suite validates nested composition, successful removal, and removal of an absent package without mutating existing content.
 
 ## Repository contents
 
-- `paqueteria.ts` — original TypeScript implementation and executable example.
-- `paqueteria.js` — generated JavaScript preserved from the original project.
-- `UML-Diagrama de clases.PNG` — class diagram of the model.
-- `package.json` — original project metadata and scripts.
-
-## UML
-
-![Class diagram](./UML-Diagrama%20de%20clases.PNG)
+- `paqueteria.ts` — TypeScript implementation and executable example.
+- `paqueteria.test.ts` — unit tests using Node's built-in test runner.
+- `cli-diagram.d.ts` — minimal type declaration for the legacy diagram dependency.
+- `tsconfig.json` — strict TypeScript compiler configuration.
+- `.github/workflows/ci.yml` — automated build and test workflow.
+- `UML-Diagrama de clases.PNG` — diagram preserved from the original academic project.
 
 ## Project status
 
-This repository preserves an academic implementation from 2020. Its main purpose is to demonstrate object-oriented modeling, recursive composition, and the Composite pattern.
-
-The dependency setup and automated tests are intentionally left for a separate modernization pass before adding continuous integration.
+Originally created as an academic exercise in 2020 and modernized with explicit dependencies, strict compilation, automated tests, and continuous integration.
