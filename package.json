@@ -1,11 +1,13 @@
 {
   "name": "tp-objetos",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.1.0",
+  "description": "TypeScript example of the Composite pattern applied to nested packages and products.",
+  "private": true,
   "scripts": {
-    "test": "node paqueteria.js",
-    "install": "npm install cli-diagram typescript @types/node --save"
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "start": "npm run build && node dist/paqueteria.js",
+    "test": "npm run build && node --test dist/paqueteria.test.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,14 @@
     "url": "https://github.com/agustinpitaro/TP-Objetos/issues"
   },
   "homepage": "https://github.com/agustinpitaro/TP-Objetos#readme",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
-    "cli-diagram": "^0.3.0"
+    "cli-diagram": "0.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.9.2"
   }
 }
