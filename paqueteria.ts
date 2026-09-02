@@ -1,86 +1,82 @@
-import Diagram = require('cli-diagram');
+import Diagram = require("cli-diagram");
 
-abstract class paqueteAbs {
-    abstract mostrar();
-
+export abstract class Paquete {
+  abstract mostrar(): void;
 }
 
-class paqueteSimple extends paqueteAbs {
-    name: string;
-    myDiagram: Diagram;
-    constructor(name: string){ 
-        super();
-        this.name = name; 
-        this.myDiagram = new Diagram();
-        this.myDiagram.box(this.name);
-        
-    }
+export class PaqueteSimple extends Paquete {
+  private readonly diagram: Diagram;
 
-    mostrar(){
-        
-        console.log(this.myDiagram.draw()); 
-    
-    }
+  constructor(public readonly nombre: string) {
+    super();
+    this.diagram = new Diagram();
+    this.diagram.box(nombre);
+  }
+
+  mostrar(): void {
+    console.log(this.diagram.draw());
+  }
 }
 
-class paqueteCompuesto extends paqueteAbs{
-    name: string;
-    list: Array<paqueteAbs>;
-    myDiagram: Diagram;
+export class PaqueteCompuesto extends Paquete {
+  private readonly elementos: Paquete[] = [];
+  private readonly diagram: Diagram;
 
-    constructor(name: string){ 
-        super();
-        this.list = new Array<paqueteAbs>();
-        this.name = name; 
-        this.myDiagram = new Diagram();
-        this.myDiagram.container(this.name); 
+  constructor(public readonly nombre: string) {
+    super();
+    this.diagram = new Diagram();
+    this.diagram.container(nombre);
+  }
+
+  get contenido(): readonly Paquete[] {
+    return this.elementos;
+  }
+
+  mostrar(): void {
+    console.log(this.diagram.draw());
+    console.log("________________________________");
+    this.elementos.forEach((paquete) => paquete.mostrar());
+    console.log("________________________________");
+  }
+
+  agregar(paquete: Paquete): void {
+    this.elementos.push(paquete);
+  }
+
+  eliminar(paquete: Paquete): boolean {
+    const index = this.elementos.indexOf(paquete);
+
+    if (index === -1) {
+      return false;
     }
 
-    mostrar(){
-        
-        console.log(this.myDiagram.draw()); 
-        console.log("________________________________"); //El metodo line() no funciona
-        this.list.forEach(paqueteAbs => {
-            paqueteAbs.mostrar();   
-          }
-         )
-        ;
-        console.log("________________________________"); //El metodo line() no funciona   
-    }
-
-    addPaquete(paquete:paqueteAbs){
-        this.list.push(paquete);
-
-    }
-    removePaquete(paquete:paqueteAbs){
-        this.list = this.list.splice(this.list.indexOf(paquete), 1);
-        
-    }
+    this.elementos.splice(index, 1);
+    return true;
+  }
 }
 
-let p1 = new paqueteSimple("p1");
-let p2 = new paqueteSimple("p2");
-let p3 = new paqueteSimple("p3");
-let p4 = new paqueteSimple("p4");
-p1.mostrar();
-p2.mostrar();
-p3.mostrar();
-p4.mostrar();
+export function ejecutarEjemplo(): void {
+  const p1 = new PaqueteSimple("p1");
+  const p2 = new PaqueteSimple("p2");
+  const p3 = new PaqueteSimple("p3");
+  const p4 = new PaqueteSimple("p4");
 
-let pc1 = new paqueteCompuesto("pc1");
-let pc2 = new paqueteCompuesto("pc2");
-let pc3 = new paqueteCompuesto("pc3");
+  const pc1 = new PaqueteCompuesto("pc1");
+  const pc2 = new PaqueteCompuesto("pc2");
+  const pc3 = new PaqueteCompuesto("pc3");
 
-pc1.addPaquete(p1);
-pc1.addPaquete(p2);
-pc2.addPaquete(p3);
-pc2.addPaquete(p4);
-pc3.addPaquete(pc1);
-pc3.addPaquete(pc2);
+  pc1.agregar(p1);
+  pc1.agregar(p2);
+  pc2.agregar(p3);
+  pc2.agregar(p4);
+  pc3.agregar(pc1);
+  pc3.agregar(pc2);
 
-pc1.mostrar();
-pc2.mostrar();
-pc3.mostrar();
+  pc1.mostrar();
+  pc2.mostrar();
+  pc3.mostrar();
+}
 
-
-
+if (require.main === module) {
+  ejecutarEjemplo();
+}
